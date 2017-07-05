@@ -1,13 +1,9 @@
-# Blogspot crawler
-
-## Preview
-
-![](http://i.imgur.com/9zvm3KE.png)
+# Blogspot post retriever
 
 ## Usage
 
 ```sh
-npm install blogger-posts-crawler --save
+npm google-blogger-posts-getter --save
 ```
 
 ## API
@@ -26,15 +22,15 @@ npm install blogger-posts-crawler --save
 ###### Example
 
 ```js
-import crawler from 'blogger-posts-crawler'
+var blogger = require('google-blogger-posts-getter');
 
-let articles = await crawler.findAll({
-  url: 'http://happycloud2013.blogspot.tw/',
+crawler.findAll({
+  url: 'http://thisiswhytheinternetexists.blogspot.com/',
   fetchAll: false,
-  key: YOUR_API_KEY,
+  key: 'YOUR_API_KEY',
+}).then(function(articles) {
+	console.log(articles)  // {Article[]}
 })
-
-console.log(articles) // {Article[]}
 ```
 
 ## Interfaces
@@ -51,19 +47,4 @@ console.log(articles) // {Article[]}
 @prop {string} published - ISO8601 format
 @prop {string} title
 @prop {string} url
-```
-
-## Development Flow
-
-```
-vi src/index.js
-:wq
-npm test
-git commit -m 'minor changes'
-```
-
-## test
-
-```sh
-npm test
 ```
